@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
-import pdfWorker from "pdfjs-dist/build/pdf.worker.entry"; // Import worker from pdfjs-dist
+import { pdfjs } from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
+pdfjs.GlobalWorkerOptions.workerSrc = "/js/pdf.worker.min.mjs";
 
 export const ResumeInput = () => {
     const [tags, setTags] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState<string>("");
-    const [numPages, setNumPages] = useState<number>(0);
     const [pdfText, setPdfText] = useState<string>("");
 
     const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,16 +19,16 @@ export const ResumeInput = () => {
                 for (let i = 1; i <= pdf.numPages; i++) {
                     const page = await pdf.getPage(i);
                     const pageText = await page.getTextContent();
-                    pageText.items.forEach((item) => {
-                        text += item + " ";
+                    pageText.items.forEach((item: any) => {
+                        text += item.str + " ";
                     });
                 }
                 setPdfText(text);
-                console.log(text)
+                console.log(text);
             };
             fileReader.readAsArrayBuffer(file);
         }
-    };
+    };    
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && inputValue.trim()) {
@@ -89,7 +87,7 @@ export const ResumeInput = () => {
             <div className="mt-4">
                 <p className="text-gray-900 dark:text-white text-sm">{pdfText}</p>
             </div>
-            <div>{pdfText}</div>
+            <div>this is{pdfText}</div>
         </div>
     );
 };

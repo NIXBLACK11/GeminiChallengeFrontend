@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { pdfjs } from "react-pdf";
+import { getLinks } from "../backendCalls/getLinks";
+import { Links } from "../interfaces/linkInterface";
+import { LinkResponse } from "../backendCalls/getLinks";
+import { RenderLinks } from "./RenderLinks";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/js/pdf.worker.min.mjs";
 
@@ -7,6 +11,21 @@ export const ResumeInput = () => {
     const [tags, setTags] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState<string>("");
     const [pdfText, setPdfText] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+    const [links, setLinks] = useState<Links[] | null>(null);
+
+    const fetchProcessLinks = async () => {
+        setLoading(true);
+        const response: LinkResponse = await getLinks(pdfText, tags);
+        setLoading(false);
+
+        if (response.success) {
+            setLinks(response.data || []);
+            console.log(response.data);
+        } else {
+            console.error('Error:', response.error);
+        }
+    }
 
     const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -24,11 +43,10 @@ export const ResumeInput = () => {
                     });
                 }
                 setPdfText(text);
-                console.log(text);
             };
             fileReader.readAsArrayBuffer(file);
         }
-    };    
+    };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && inputValue.trim()) {
@@ -81,13 +99,15 @@ export const ResumeInput = () => {
                     ))}
                 </div>
             </div>
-            <button className="text-gray-950 bg-slate-800 w-28 h-10 hover:bg-slate-950 hover:text-white" style={{ borderRadius: "20px" }}>
+            <button 
+                className="text-gray-950 bg-slate-800 w-28 h-10 hover:bg-slate-950 hover:text-white" 
+                style={{ borderRadius: "20px" }}
+                onClick={fetchProcessLinks}
+            >
                 Search !!
             </button>
-            <div className="mt-4">
-                <p className="text-gray-900 dark:text-white text-sm">{pdfText}</p>
-            </div>
-            <div>this is{pdfText}</div>
+            {loading && <div>Loading...</div>}
+            {links && <RenderLinks links={links} />}
         </div>
     );
 };

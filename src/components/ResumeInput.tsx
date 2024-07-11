@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { pdfjs } from "react-pdf";
-import { getLinks } from "../backendCalls/getLinks";
+// import { getLinks } from "../backendCalls/getLinks";
 import { Links } from "../interfaces/linkInterface";
-import { LinkResponse } from "../backendCalls/getLinks";
+// import { LinkResponse } from "../backendCalls/getLinks";
 import { RenderLinks } from "./RenderLinks";
 import { Alert } from "./Alert";
 
@@ -17,14 +17,14 @@ export const ResumeInput = () => {
     const [showAlert, setShowAlert] = useState<boolean>(false);
 
     const fetchProcessLinks = async () => {
-        // if(pdfText=="") {
-        //     setShowAlert(true);
-        //     setTimeout(() => {setShowAlert(false)}, 5000);
-        //     return
-        // }
-        // setLoading(true);
+        if(pdfText=="") {
+            setShowAlert(true);
+            setTimeout(() => {setShowAlert(false)}, 5000);
+            return
+        }
+        setLoading(true);
         // const response: LinkResponse = await getLinks(pdfText, tags);
-        // setLoading(false);
+        setLoading(false);
 
         // if (response.success) {
         //     setLinks(response.data || []);

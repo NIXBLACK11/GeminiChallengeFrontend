@@ -10,7 +10,7 @@ export const RenderLinks: React.FC<RenderLinksProps> = ({ links }) => {
         <div>
             {links && (
                 <div className="mt-4">
-                    <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-5">
+                    <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 pb-5">
                         {links.map((link, index) => (
                             <Card 
                                 key={index} 

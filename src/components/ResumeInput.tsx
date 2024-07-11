@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { pdfjs } from "react-pdf";
-// import { getLinks } from "../backendCalls/getLinks";
+import { getLinks } from "../backendCalls/getLinks";
 import { Links } from "../interfaces/linkInterface";
-// import { LinkResponse } from "../backendCalls/getLinks";
+import { LinkResponse } from "../backendCalls/getLinks";
 import { RenderLinks } from "./RenderLinks";
 import { Alert } from "./Alert";
 
@@ -23,62 +23,61 @@ export const ResumeInput = () => {
             return
         }
         setLoading(true);
-        // const response: LinkResponse = await getLinks(pdfText, tags);
+        const response: LinkResponse = await getLinks(pdfText, tags);
         setLoading(false);
 
-        // if (response.success) {
-        //     setLinks(response.data || []);
-        //     // console.log(response.data)
-        // } else {
-        //     console.error('Error:', response.error);
-        // }
+        if (response.success && response.data) {
+            setLinks(response.data);
+        } else {
+            console.error('Error:', response.error);
+        }
 
-        setLinks([{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        },{
-            Title:"Intern",
-            Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
-            Image: "https://picsum.photos/350/200",
-            Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
-        }]);
+        // setLinks([{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://www.ziprecruiter.com/img/default-og-image.jpg",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // },{
+        //     Title:"Intern",
+        //     Link: "https://www.internsg.com/job/galxe-golang-engineer-intern/",
+        //     Image: "https://picsum.photos/300/200",
+        //     Description: "Postion open for a golang developer, remote workk, having a prior interview experience"
+        // }]);
     }
 
     const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -9,13 +9,22 @@ export interface LinkResponse {
 
 export async function getLinks(resume: string, tags: string[]): Promise<LinkResponse> {
     try {
-        const response: AxiosResponse<Links[]> = await axios.post('http://localhost:8080/getJobs', {
+        // https://geminichallenge.onrender.com
+        // http://localhost:8080
+        const response: AxiosResponse<Links[]> = await axios.post('https://geminichallenge.onrender.com/getJobs', {
             resume,
             tags
         });
 
         if (response.status === 200) {
-            const links: Links[] = response.data;
+            const links: Links[] = response.data.map(item => ({
+                Title: item.Title,
+                Link: item.Link,
+                Image: item.Image,
+                Description: item.Description
+            }));
+            console.log(links)
+            console.log(typeof(links[0].Description))
             return { success: true, data: links };
         } else {
             console.log(`Unexpected response status: ${response.status}`);

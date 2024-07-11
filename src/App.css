@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.gradient-text-heading {
+    font-size: 4em;
+    font-weight: bold;
+    background: linear-gradient(90deg, #1e40af, #f7ef3e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-text {
+  font-size: 2em;
+  font-weight: bold;
+  background: linear-gradient(90deg, #1e40af, #f7ef3e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.myButton {
+  border-radius: 20px;
+  background-color: #f7ef3e;
+}
+
+.myButton:hover {
+  background-color: #2ddcd3;
+}

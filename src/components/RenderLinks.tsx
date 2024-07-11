@@ -1,4 +1,5 @@
 import { Links } from "../interfaces/linkInterface";
+import { Card } from "./Card";
 
 interface RenderLinksProps {
     links: Links[];
@@ -9,16 +10,17 @@ export const RenderLinks: React.FC<RenderLinksProps> = ({ links }) => {
         <div>
             {links && (
                 <div className="mt-4">
-                    <p className="text-gray-900 dark:text-white text-sm">Links:</p>
-                    <ul>
+                    <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-5">
                         {links.map((link, index) => (
-                            <li key={index}>
-                                <a href={link.Link} target="_blank" rel="noopener noreferrer">
-                                    {link.Title}
-                                </a>
-                            </li>
+                            <Card 
+                                key={index} 
+                                Title={link.Title} 
+                                Link={link.Link} 
+                                Image={link.Image} 
+                                Description={link.Description}
+                            />
                         ))}
-                    </ul>
+                    </div>
                 </div>
             )}
         </div>

@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className='bg-gray-950 h-screen pt-0 mt-0'>
+    <div className='bg-gray-950 pt-0 mt-0'>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />

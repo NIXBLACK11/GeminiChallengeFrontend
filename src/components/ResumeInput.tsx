@@ -160,7 +160,7 @@ export const ResumeInput = () => {
                     >
                     Search !!
                 </button>
-                {loading && <div>Loading...</div>}
+                {loading && <div className="text-white">Loading...</div>}
                 {links && <RenderLinks links={links} />}
             </div>
         </>

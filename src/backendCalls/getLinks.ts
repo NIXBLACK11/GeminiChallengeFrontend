@@ -11,7 +11,7 @@ export async function getLinks(resume: string, tags: string[]): Promise<LinkResp
     try {
         // https://geminichallenge.onrender.com
         // http://localhost:8080
-        const response: AxiosResponse<Links[]> = await axios.post('https://geminichallenge.onrender.com/getJobs', {
+        const response: AxiosResponse<Links[]> = await axios.post('http://localhost:8080/getJobs', {
             resume,
             tags
         });

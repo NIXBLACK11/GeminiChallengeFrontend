@@ -1,6 +1,5 @@
 import { About } from "../components/About"
 import { ResumeInput } from "../components/ResumeInput"
-
 export const Home = () => {
     return (
         <div className="container mx-auto pt-12">

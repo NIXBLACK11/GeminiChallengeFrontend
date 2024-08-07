@@ -20,9 +20,9 @@
 
 .myButton {
   border-radius: 20px;
-  background-color: #f7ef3e;
+  background-color: #1e40af;
 }
 
 .myButton:hover {
-  background-color: #2ddcd3;
+  background-color: #f7ef3e;
 }

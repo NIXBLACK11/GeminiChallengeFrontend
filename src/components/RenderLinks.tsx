@@ -23,8 +23,8 @@ export const RenderLinks: React.FC<RenderLinksProps> = ({ links }) => {
                             </div>
                         ))}
                     </div>
-                    <div className="text-white text-4xl">
-                        Due to free api keys the number of links is limited!!
+                    <div className="text-white text-2xl">
+                        Due to the free API keys, the number of links is limited.
                     </div>
                 </div>
             )}

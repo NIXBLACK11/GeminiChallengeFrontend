@@ -5,7 +5,7 @@ export const Card: React.FC<Links> = ({ Title, Link, Image, Description }) => {
     return (
         <TiltWrapper options={{ max: 15, speed: 200 }}>
             <a href={Link} target="_blank" rel="noopener noreferrer">
-                <div className="max-w bg-white border border-gray-200 rounded-lg bg-transparent">
+                <div className="max-w border border-gray-200 rounded-lg bg-transparent">
                     <div className="flex justify-center items-center h-64 overflow-hidden rounded-t-lg m-4">
                         <img className="rounded-lg" style={{ height: "100%", width: "100%", objectFit: "cover" }} src={Image} alt={Title} />
                     </div>

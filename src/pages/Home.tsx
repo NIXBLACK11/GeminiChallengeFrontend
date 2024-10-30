@@ -1,5 +1,6 @@
 import { About } from "../components/About"
-import { ResumeInput } from "../components/ResumeInput"
+// import { ResumeInput } from "../components/ResumeInput"
+import { SearchBar } from "../components/SeacrhBar"
 export const Home = () => {
     return (
         <div className="container mx-auto pt-12">
@@ -8,7 +9,8 @@ export const Home = () => {
                     <About/>
                 </div>
                 <div className="" style={{borderRadius: "10px"}}>
-                    <ResumeInput/>
+                    {/* <ResumeInput/> */}
+                    <SearchBar/>
                 </div>
             </div>
         </div>

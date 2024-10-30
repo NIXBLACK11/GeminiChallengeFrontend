@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className='pt-0 mt-0 h-screen' style={{ backgroundColor: "#000000", position: 'relative' }}>
-      <img 
+      {/* <img 
         src="img.png" 
         alt="Description of image" 
         style={{ 
@@ -17,7 +17,7 @@ function App() {
           objectFit: 'cover', 
           zIndex: 1
         }} 
-      />
+      /> */}
       <div style={{ position: 'relative', zIndex: 2 }}>
         <BrowserRouter>
           <Routes>

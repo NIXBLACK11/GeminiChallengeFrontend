@@ -9,10 +9,7 @@ export interface LinkResponse {
 
 export async function getLinks(resume: string, tags: string[]): Promise<LinkResponse> {
     try {
-        // https://geminichallenge.onrender.com
-        // http://localhost:8080
-        // http://13.127.173.211:8080/
-        const response: AxiosResponse<Links[]> = await axios.post('http://13.127.173.211:8080/getJobs', {
+        const response: AxiosResponse<Links[]> = await axios.post('https://jobs.nixarcade.fun/getJobs', {
             resume,
             tags
         });

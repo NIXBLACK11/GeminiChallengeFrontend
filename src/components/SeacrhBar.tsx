@@ -7,11 +7,13 @@ import { RenderLinks } from "./RenderLinks";
 import { Alert } from "./Alert";
 import { PiFilePdfBold } from "react-icons/pi";
 import { FaSearch } from "react-icons/fa";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/js/pdf.worker.min.mjs";
 
 export const SearchBar = () => {
     const [tags, setTags] = useState<string[]>([]);
+    const [file, setFile] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>("");
     const [pdfText, setPdfText] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
@@ -87,11 +89,12 @@ export const SearchBar = () => {
                     />
                     <label className="absolute inset-y-0 end-0 flex items-center pe-3 cursor-pointer">
                         <input 
-                            type="file" 
+                            type="file"
+                            onClick={()=>setFile(true)}
                             onChange={handleFileUpload} 
                             className="hidden" 
                         />
-                        <PiFilePdfBold className="text-2xl text-[#c03535]" />
+                        { file ? <IoCheckmarkDoneSharp className="text-2xl text-[#F461A0]"/> : <PiFilePdfBold className="text-2xl text-[#F461A0]" /> }
                     </label>
                 </div>
                 <button type="submit" className="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

@@ -9,7 +9,6 @@ export const Home = () => {
                     <About/>
                 </div>
                 <div className="" style={{borderRadius: "10px"}}>
-                    {/* <ResumeInput/> */}
                     <SearchBar/>
                 </div>
             </div>

@@ -21,8 +21,6 @@ export async function getLinks(resume: string, tags: string[]): Promise<LinkResp
                 Image: item.Image,
                 Description: item.Description
             }));
-            // console.log(links)
-            // console.log(typeof(links[0].Description))
             return { success: true, data: links };
         } else {
             console.log(`Unexpected response status: ${response.status}`);

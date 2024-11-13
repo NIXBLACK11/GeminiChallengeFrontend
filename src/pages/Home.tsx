@@ -1,5 +1,4 @@
 import { About } from "../components/About"
-// import { ResumeInput } from "../components/ResumeInput"
 import { SearchBar } from "../components/SeacrhBar"
 export const Home = () => {
     return (

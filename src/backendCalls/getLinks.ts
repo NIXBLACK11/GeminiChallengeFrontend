@@ -9,7 +9,7 @@ export interface LinkResponse {
 
 export async function getLinks(resume: string, tags: string[]): Promise<LinkResponse> {
     try {
-        const response: AxiosResponse<Links[]> = await axios.post('https://jobs.nixarcade.fun/getJobs', {
+        const response: AxiosResponse<Links[]> = await axios.post('https://geminichallenge.onrender.com/getJobs', {
             resume,
             tags
         });
